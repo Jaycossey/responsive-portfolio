@@ -2,34 +2,77 @@
 :root {
     --font-1: monospace;
     --font-color-1: #7F00A9;
-    --linear-1: linear-gradient(-330deg, #A47EB0, #ECC7FB);
+    --font-color-light: #E9B4FA;
+    --linear-1: linear-gradient(-330deg, #D1D1D1, #ECC7FB);
     --linear-2: linear-gradient(180deg, #C411FF, #E9B4FA);
+    --header-linear: linear-gradient(#3D3D3D, black);
+    --radial-white: radial-gradient(ellipse, white, transparent 70%);
+    --radial-white-100: radial-gradient(ellipse, white, transparent 95%);
+
+    scroll-behavior: smooth;
 }
 
 body {
     background-image: var(--linear-1);
     height: 300vh;
     font-family: var(--font-1);
-    /* overflow: hidden; */
-    scroll-behaviour: smooth;
+    overflow: hidden;
+
 }
 
+a {
+    text-decoration: none;
+    color: var(--font-color-light); 
+}
+
+a:hover {
+    color: var(--font-color-1);
+    background-image: var(--linear-1);
+}
+
+/* Reusable classes */
+.lightFont {
+    color: var(--font-color-light);
+}
 
 /* Navbar and header styles */
 header {
     width: 80%;
     height: 50px;
-    border-right: 8px outset white;
-    border-bottom: 8px inset white;
-    background-image: var(--linear-2);
+    border-right: 8px outset #5C007A;
+    border-bottom: 8px inset #9700CB;
+    background-image: var(--header-linear);
     transform: skew(-30deg);
     position: fixed;
     top: 0;
     left: -30px;
-    display: flex;
-    flex-direction: rows;
 }
 
+header > img {
+    position: absolute;
+    transform: skew(30deg);
+    height: 99%;
+    margin-left: 40px;
+}
+
+header ul {
+    position: absolute;
+    display: flex;
+    flex-direction: auto;
+    gap: 120px;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-evenly;
+    transform: skew(30deg);
+    width: 90%;
+    font-size: 1rem;
+    list-style-type: none;
+    text-transform: uppercase;
+}
+
+header > ul > li {
+    position: relative;
+}
 
 /* main and section grid styles */
 main {
@@ -40,7 +83,7 @@ main {
         "welcome"
         "portfolio"
         "contact";
-    gap: 40px;
+    gap: 60px;
     border: 2px solid green;
     margin: 50px;
 }
@@ -78,7 +121,7 @@ section {
     margin-top: 10%;
 }
 
-#profile-container > img:hover {
+#profile:hover {
     transform: scale(105%);
     transition: ease-in-out;
     transition-duration: 0.3s;
@@ -132,3 +175,12 @@ footer {
     bottom: 0;
     border-top: 8px solid black;
 }
+
+/*
+    Media queries: 
+        Keep track of - Header  (flex)
+                        Main    (grid)
+                        Sections (grid)
+                        section-content (grid)
+                        footer (flex)
+*/
