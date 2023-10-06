@@ -1,0 +1,134 @@
+/* Global and body styles */
+:root {
+    --font-1: monospace;
+    --font-color-1: #7F00A9;
+    --linear-1: linear-gradient(-330deg, #A47EB0, #ECC7FB);
+    --linear-2: linear-gradient(180deg, #C411FF, #E9B4FA);
+}
+
+body {
+    background-image: var(--linear-1);
+    height: 300vh;
+    font-family: var(--font-1);
+    /* overflow: hidden; */
+    scroll-behaviour: smooth;
+}
+
+
+/* Navbar and header styles */
+header {
+    width: 80%;
+    height: 50px;
+    border-right: 8px outset white;
+    border-bottom: 8px inset white;
+    background-image: var(--linear-2);
+    transform: skew(-30deg);
+    position: fixed;
+    top: 0;
+    left: -30px;
+    display: flex;
+    flex-direction: rows;
+}
+
+
+/* main and section grid styles */
+main {
+    display: grid;
+    grid-template-rows: 3fr 3fr 3fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "welcome"
+        "portfolio"
+        "contact";
+    gap: 40px;
+    border: 2px solid green;
+    margin: 50px;
+}
+
+section {
+    border: 2px solid black;
+    height: 90vh;
+}
+
+
+/* welcome section layout styling */
+#welcome {
+    display: grid;
+    grid-template-rows: 3fr 1fr 400px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "profile"
+        "hello"
+        "banner";
+    align-items: center;
+    justify-items: center;
+}
+
+#profile-container {
+    grid-areas: profile;
+}
+
+/* Profile pic and text styling */
+#profile-container > img {
+    width: 300px;
+    height: 300px;
+    border: 6px solid #A343C3;
+    border-radius: 150px;
+    box-shadow: 0 20px 30px black;
+    margin-top: 10%;
+}
+
+#profile-container > img:hover {
+    transform: scale(105%);
+    transition: ease-in-out;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#text-container {
+    grid-areas: hello;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: var(--font-color-1);
+    border-radius: 30px;
+    padding: 15px;
+    background-image: radial-gradient(ellipse, white, transparent 70%);
+}
+
+#text-container > h1,
+#text-container > p {
+    drop-shadow: 10px 10px 5px black;
+}
+
+#text-container > h1 {
+    font-size: 1.5rem;
+}
+
+#text-container > p {
+    font-size: 1.2rem;
+}
+
+.banner {
+    grid-areas: banner;
+    position: static;
+    border: 8px solid black;
+    width: 100%;
+    height: 80%;
+}
+
+
+/* Portfolio grid styles */
+
+
+
+/* Contact section styles */
+
+
+
+/* Footer styles */
+footer {
+    position: fixed;
+    bottom: 0;
+    border-top: 8px solid black;
+}
