@@ -16,7 +16,7 @@ body {
     background-image: var(--linear-1);
     height: 300vh;
     font-family: var(--font-1);
-    overflow: hidden;
+    /* overflow: hidden; */
 
 }
 
@@ -91,6 +91,7 @@ main {
 section {
     border: 2px solid black;
     height: 90vh;
+    margin-y: 10px;
 }
 
 
@@ -157,17 +158,43 @@ section {
     position: static;
     border: 8px solid black;
     width: 100%;
-    height: 80%;
+    height: 70%;
+    margin-bottom: 90px;
 }
 
 
 /* Portfolio grid styles */
-
-
+#portfolio {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "mainFeature mainFeature mainFeature"
+        "secondary secondary secondary"
+        "comingSoon comingSoon comingSoon";
+}
 
 /* Contact section styles */
+#contact {
+    display: grid;
+    grid-template-rows: 2fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        "main main main main"
+        "leftMiddle leftMiddle rightMiddle rightMiddle"
+        "icon icon icon icon";
+}
 
+.mainDiv {
+    border: 2px solid black;
+    grid-areas: main;
 
+}
+
+.portfolioSecondary {
+    border: 2px dashed blue;
+    grid-areas: secondary;
+}
 
 /* Footer styles */
 footer {
