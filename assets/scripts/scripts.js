@@ -41,9 +41,9 @@ function createElements(sectionName, targetArray, divsNeeded) {
 
 // apply the styles / grids to the divs
 function positionDivs(sectionName, targetArray) {
-
+    // ensure divs are visual and correct size
     targetArray.forEach((element) => {
-        element.style.border = "2px dashed orange";
+        element.style.border = "4px inset purple";
         element.style.height = "100%";
         element.style.width = "100%";
     });
@@ -51,6 +51,7 @@ function positionDivs(sectionName, targetArray) {
     // loop through array to set gridArea
     for (let i = 0; i < targetArray.length; i++) {
         let element = targetArray[i];
+        // dynamic classes, to make this scalable will be in a future update.
         switch(true) {
             case (sectionName === "portfolio" && i < 1):
                 element.className = "mainFeature";
@@ -59,7 +60,6 @@ function positionDivs(sectionName, targetArray) {
                 element.className = "secondary" + i;
                 break;
             case(sectionName === "portfolio" && i < 7):
-                console.log(element);
                 element.className = "tertiary" + i;
                 break;
             case(sectionName === "contact" && i < 1):
@@ -114,3 +114,7 @@ function generateDivs(sectionName) {
 // call functions
 portfolioWIndow.onload = generateDivs("portfolio");
 contactWindow.onload = generateDivs("contact");
+
+// Because I have generated these divs with JS, I need to make sure that any child elements
+// -- especially in contact form
+// are created with a query selector as well and append those elements inside from here.
