@@ -8,84 +8,109 @@
  * Contact links
  */
 
-
 // GLOBALS ---------------------------------
 let portfolioWIndow = document.getElementById('portfolio');
 let contactWindow = document.getElementById('contact');
 
-const MAIN_DIV_ARRAY = [];
-const SEC_DIV_ARRAY = [];
-const TER_DIV_ARRAY = [];
+// Variables to determine total divs needed per section
+// -- side note, this is determined by the total grid area names not the columns and rows!
+// update idea: call a function that can read the css and automatically generate this variable. -- NOT URGENT!!
+const portRequires = 7;
+const contactRequires = 7;
 
-// Create main divs
-function createMainDiv(sectionName) {
-    console.log("main");
-    // create container element for content
-    let mainDiv = document.createElement('div');
+// Arrays to store the divs
+const PORTFOLIO_DIV_ARRAY = [];
+const CONTACT_DIV_ARRAY = [];
 
-    // classNames and id's
-    mainDiv.id = sectionName + "-main";
-    mainDiv.className = "mainDiv";
 
-    MAIN_DIV_ARRAY.push(mainDiv);
-    console.log(MAIN_DIV_ARRAY);
-
-    return mainDiv;
-}
-
-// Create secondary divs
-function createSecondaryDivs(sectionName, columnCount) {
-    console.log("secfeature" + columnCount);
-    for (let i = 0; i < columnCount; i++) {
-        let newDiv = document.createElement('div');
-        
-        newDiv.id = sectionName + "-secondary" + columnCount;
-        newDiv.className = sectionName + "Secondary";
-
-        SEC_DIV_ARRAY.push(newDiv);
+// create elements and push to arrays
+function createElements(sectionName, targetArray, divsNeeded) {
+    // variables to allow some scalability
+    for (let i = 0; i < divsNeeded; i++) {
+        // element
+        let div = document.createElement('div');
+        // unique id + class specifications
+        div.id = sectionName + i;
+        // push to array
+        targetArray.push(div);
     }
-    return;
 
-}
-
-// create tertiary divs
-function createTertiaryDivs(sectionName, columnCount) {
-    console.log("soon" + columnCount);
+    positionDivs(sectionName, targetArray);
     return;
 }
 
-function generateFeatures(sectionName) {
-    let mainFeature;
-    let secondaryFeature;
-    let comingSoon;
+// apply the styles / grids to the divs
+function positionDivs(sectionName, targetArray) {
+
+    targetArray.forEach((element) => {
+        element.style.border = "2px dashed orange";
+        element.style.height = "100%";
+        element.style.width = "100%";
+    });
+
+    // loop through array to set gridArea
+    for (let i = 0; i < targetArray.length; i++) {
+        let element = targetArray[i];
+        switch(true) {
+            case (sectionName === "portfolio" && i < 1):
+                element.className = "mainFeature";
+                break;
+            case(sectionName === "portfolio" && i <= 3):
+                element.className = "secondary" + i;
+                break;
+            case(sectionName === "portfolio" && i < 7):
+                console.log(element);
+                element.className = "tertiary" + i;
+                break;
+            case(sectionName === "contact" && i < 1):
+                element.className = "mainContact";
+                break;
+            case(sectionName === "contact" && i < 2):
+                element.className = "emailForm";
+                break;
+            case(sectionName === "contact" && i < 3):
+                element.className = "links";
+                break;
+            case(sectionName === "contact" && i < 7):
+                element.className = "icon" + i;
+
+        }
+    }
+
+    appendDivs(sectionName, targetArray);
     
-    // designed to be able to add different conditionals if more is added to the site.
-    switch(sectionName) {
+}
+
+// put divs on screen
+function appendDivs(sectionName, targetArray) {
+    
+    if (sectionName === "portfolio") {
+        targetArray.forEach((element) =>{
+            portfolioWIndow.appendChild(element);
+        });
+    } else if (sectionName === "contact") {
+        targetArray.forEach((element) => {
+            contactWindow.appendChild(element);
+        })
+    };
+
+}
+
+// generate containers for section content
+function generateDivs(sectionName) {
+    // create elements depending on input, then position.
+    switch (sectionName) {
         case "portfolio":
-            mainFeature = createMainDiv(sectionName);        
-            secondaryFeature = createSecondaryDivs(sectionName, 3);
-            comingSoon = createTertiaryDivs(sectionName, 3);
+            createElements(sectionName, PORTFOLIO_DIV_ARRAY, portRequires);
+            positionDivs(sectionName, PORTFOLIO_DIV_ARRAY);
             break;
         case "contact":
-            mainFeature = createMainDiv(sectionName);        
-            secondaryFeature = createSecondaryDivs(sectionName, 2);
-            comingSoon = createTertiaryDivs(sectionName, 4);
-            break;
+            createElements(sectionName, CONTACT_DIV_ARRAY, contactRequires);
+            positionDivs(sectionName, CONTACT_DIV_ARRAY);
     }
-
-    return mainFeature, secondaryFeature, comingSoon;
-}
-
-// attach all features to the sections in html
-function attachFeatures() {
-    let portfolio = generateFeatures("portfolio");
-    let contact = generateFeatures("contact")
-    portfolioWIndow.appendChild(portfolio);
-    contactWindow.appendChild(contact);
     return;
 }
 
-portfolioWIndow.onload = attachFeatures();
-
-// Too tired, missed huge logical error, I want to append within the functions rather
-// than or at least as well as storing within the arrays. will handle this tomorrow.
+// call functions
+portfolioWIndow.onload = generateDivs("portfolio");
+contactWindow.onload = generateDivs("contact");
