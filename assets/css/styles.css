@@ -55,11 +55,11 @@ header > img {
     margin-left: 40px;
 }
 
-header ul {
+.flex-row {
     position: absolute;
     display: flex;
     flex-direction: auto;
-    gap: 120px;
+    gap: 20%;
     padding-left: 20px;
     padding-right: 20px;
     justify-content: space-evenly;
@@ -170,19 +170,36 @@ section {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
         "mainFeature mainFeature mainFeature"
-        "secondary secondary secondary"
-        "comingSoon comingSoon comingSoon";
+        "secondary1 secondary2 secondary3"
+        "tertiary4 tertiary5 tertiary6";
 }
+
+.mainFeature {
+    grid-area: mainFeature;
+}
+
 
 /* Contact section styles */
 #contact {
     display: grid;
-    grid-template-rows: 2fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas: 
         "main main main main"
-        "leftMiddle leftMiddle rightMiddle rightMiddle"
-        "icon icon icon icon";
+        "emailForm emailForm links links"
+        "icon1 icon2 icon3 icon4";
+}
+
+.mainContact {
+    grid-area: main;
+}
+
+.emailForm {
+    grid-area: emailForm; 
+}
+
+.links {
+    grid-area: links;
 }
 
 .mainDiv {
