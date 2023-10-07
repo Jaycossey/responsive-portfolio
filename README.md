@@ -10,6 +10,13 @@ This is an early version of my portfolio, focusing on responsive design and CSS.
 - CSS
 - Javascript
 
+## Roadmap
+
+- Complete landing page and structure
+- Complete stylings for each grid element
+- Add form and icon elements to contact page
+- Add images / animations
+
 ## Usage
 
 Project is still WIP
