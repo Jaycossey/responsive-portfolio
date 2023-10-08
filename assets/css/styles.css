@@ -192,6 +192,9 @@ section {
     grid-areas: secondary;
 }
 
+.mainFeature {
+    content: url("../assets/images/touch-grass.PNG");
+}
 
 /* Contact section styles ----------------------------------------------------- */
 #contact {
@@ -267,7 +270,7 @@ section {
     padding: 20px;
 }
 
-#contact > div > i {
+#contact > div > a > i {
     transform: scale(300%);
     position: relative;
     left: 50%;
@@ -277,7 +280,7 @@ section {
     transition-duration: 0.3s;
 }
 
-#contact > div > i:hover {
+#contact > div > a > i:hover {
     transform: scale(315%);
     cursor: pointer;
     text-decoration: underline;
@@ -364,11 +367,10 @@ section {
     }
 
     #portfolio {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto auto auto auto auto;
+        height: 1000px;
+        grid-template-columns: auto;
+        grid-template-rows: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
         grid-template-areas: 
-            "mainFeature"
-            "mainFeature"
             "mainFeature"
             "secondary1"
             "secondary2"
@@ -376,7 +378,6 @@ section {
             "tertiary4"
             "tertiary5"
             "tertiary6";
-
         margin-top: 0;
         padding-top: 0;
     }
@@ -399,6 +400,10 @@ section {
     #portfolio > div,
     #contact > div {
         margin: 0;
+    }
+
+    #links {
+        text-indent: 0;
     }
     
 }
