@@ -180,6 +180,11 @@ section {
 
 #mainFeature {
     grid-area: mainFeature;
+    background-image: url(../images/touch-grass.PNG); 
+    background-repeat: none;
+    background-attacchment: fixed;
+    background-position: right;
+    background-size: 100%;
 }
 
 #portfolio > div,
@@ -192,9 +197,6 @@ section {
     grid-areas: secondary;
 }
 
-.mainFeature {
-    content: url("../assets/images/touch-grass.PNG");
-}
 
 /* Contact section styles ----------------------------------------------------- */
 #contact {
