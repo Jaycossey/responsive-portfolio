@@ -3,7 +3,7 @@
     --font-1: monospace;
     --font-color-1: #7F00A9;
     --font-color-light: #E9B4FA;
-    --linear-1: linear-gradient(-330deg, #D1D1D1, #ECC7FB);
+    --linear-1: linear-gradient(0deg, #D1D1D1, #B25FAF, #D1D1D1);
     --linear-2: linear-gradient(180deg, #C411FF, #E9B4FA);
     --header-linear: linear-gradient(#3D3D3D, black);
     --radial-white: radial-gradient(ellipse, white, transparent 70%);
@@ -14,7 +14,7 @@
 
 body {
     background-image: var(--linear-1);
-    height: 300vh;
+    height: 100vh;
     font-family: var(--font-1);
     /* overflow: hidden; */
 
@@ -88,8 +88,10 @@ main {
 }
 
 section {
-    height: 90vh;
-    margin-y: 10px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    padding: auto;
 }
 
 
@@ -130,8 +132,8 @@ section {
 #text-container {
     grid-areas: hello;
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     color: var(--font-color-1);
     border-radius: 30px;
     padding: 15px;
@@ -154,11 +156,12 @@ section {
 .banner {
     grid-areas: banner;
     position: static;
-    border: 8px outset black;
+    border: 8px outset gray;
     width: 100%;
     height: 70%;
     margin-top: 20px;
     margin-bottom: 190px;
+    background-color: #FFA4FC;
 }
 
 
@@ -193,6 +196,7 @@ section {
         "emailForm emailForm links links"
         "icon1 icon2 icon3 icon4";
     margin-top: 20px;
+    padding-bottom: 70px;
 }
 
 .mainContact {
@@ -234,25 +238,63 @@ footer {
                         footer (flex)
 */
 
-@media (max-width: 600px) {
+@media (min-width: 310px) and (max-width: 600px) {
+    main {
+        margin: 0;
+    }
+    
     body {
-        height: 320vh;
+        height: 100%;
     }
 
     header {
-        width: 100vw;
+        width: 100%;
         transform: translate(20px, 0);
     }
 
     header > img {
-        position: relative;
-        left: 40%;
-        right: 40%;
+        position: fixed;
+        right: 10px;
         transform: skew(0deg);
     }
 
     header > ul > li {
         display: none;
+    }
+
+    #welcome {
+        grid-template-rows: 200px 200px 300px;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            "profile"
+            "hello"
+            "banner";
+        align-items: center;
+        justify-items: center;
+    }
+
+    #profile-container {
+        margin-top: 50px;
+    }
+
+    #profile-container > img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 0;
+    }
+
+    #text-container {
+        margin: 0;
+    }
+
+    .banner {
+        height: 140px;
+    }
+
+    #portfolio > div,
+    #contact > div {
+        margin: 0;
     }
 
     #portfolio {
@@ -268,11 +310,10 @@ footer {
             "tertiary4"
             "tertiary5"
             "tertiary6";
-        margin-top: 0;
     }
 
     #contact {
-        height: 100vh;
+        height: 100%;
         margin-top: 0;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 4fr 2fr 1fr 1fr 1fr 1fr;
