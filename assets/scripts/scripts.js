@@ -1,12 +1,4 @@
-// Functions needed (will code these once structure is made)
-/**
- * Profile image link (onclick handler)
- *  -https://www.linkedin.com/in/ian-scott-6112ba258/
- * 
- * Portfolio Links
- * 
- * Contact links
- */
+// SECTION STYLING AND CREATION --------------------------------------------------------------------------------------------
 
 // GLOBALS ---------------------------------
 let portfolioWIndow = document.getElementById('portfolio');
@@ -22,6 +14,8 @@ const contactRequires = 7;
 const PORTFOLIO_DIV_ARRAY = [];
 const CONTACT_DIV_ARRAY = [];
 
+// Storage for about me text
+const aboutMeText = "If you would like to work with me, you can fill out the form, or click on any of the links below.\nPlease note, this is a work in progress.";
 
 // create elements and push to arrays
 function createElements(sectionName, targetArray, divsNeeded) {
@@ -30,7 +24,7 @@ function createElements(sectionName, targetArray, divsNeeded) {
         // element
         let div = document.createElement('div');
         // unique id + class specifications
-        div.id = sectionName + i;
+        div.className = sectionName + i;
         // push to array
         targetArray.push(div);
     }
@@ -46,6 +40,7 @@ function positionDivs(sectionName, targetArray) {
         element.style.border = "4px inset purple";
         element.style.height = "100%";
         element.style.width = "100%";
+
     });
 
     // loop through array to set gridArea
@@ -54,29 +49,29 @@ function positionDivs(sectionName, targetArray) {
         // dynamic classes, to make this scalable will be in a future update.
         switch(true) {
             case (sectionName === "portfolio" && i < 1):
-                element.className = "mainFeature";
+                element.id = "mainFeature";
                 break;
             case(sectionName === "portfolio" && i <= 3):
-                element.className = "secondary" + i;
+                element.id = "secondary" + i;
                 break;
             case(sectionName === "portfolio" && i < 7):
-                element.className = "tertiary" + i;
+                element.id = "tertiary" + i;
                 break;
             case(sectionName === "contact" && i < 1):
-                element.className = "mainContact";
+                element.id = "mainContact";
                 break;
             case(sectionName === "contact" && i < 2):
-                element.className = "emailForm";
+                element.id = "emailForm";
                 break;
             case(sectionName === "contact" && i < 3):
-                element.className = "links";
+                element.id = "links";
+                element.innerText = aboutMeText;
                 break;
             case(sectionName === "contact" && i < 7):
-                element.className = "icon" + i;
-
+                element.id = "icon" + i;
+                break;
         }
     }
-
     appendDivs(sectionName, targetArray);
     
 }
@@ -115,6 +110,65 @@ function generateDivs(sectionName) {
 portfolioWIndow.onload = generateDivs("portfolio");
 contactWindow.onload = generateDivs("contact");
 
-// Because I have generated these divs with JS, I need to make sure that any child elements
-// -- especially in contact form
-// are created with a query selector as well and append those elements inside from here.
+// CONTACT FORM GENERATION AND ICONS --------------------------------------------------------------------------------------------
+let emailFormElement = document.getElementById('emailForm');
+
+function generateForm() {
+    let nameInput = document.createElement('input');
+    let emailInput = document.createElement('input');
+    let textInput = document.createElement('input');
+    let sendButton = document.createElement('button');
+
+    nameInput.className = "nameGrid";
+    nameInput.placeholder = "Your Name:";
+
+    emailInput.className = "emailGrid";
+    emailInput.placeholder = "Your Email:";
+    
+    textInput.className = "textGrid";
+    textInput.placeholder = "Your Message:";
+    
+    sendButton.className = "sendGrid";
+    sendButton.innerText = "Send Message"
+
+    emailFormElement.appendChild(nameInput);
+    emailFormElement.appendChild(emailInput);
+    emailFormElement.appendChild(textInput);
+    emailFormElement.appendChild(sendButton);
+
+
+}
+
+generateForm();
+
+// Create the icons for contact section -----------------------------------------------------------------------------------------
+function openURL(url) {
+    console.log("openlink " + url);
+}
+
+function generateIcons() {
+    const iconArray = [
+        '<i class="fa-brands fa-linkedin" onclick="openURL(linked)"></i>',
+        '<i class="fa-brands fa-github" onclick="openURL(github)"></i>',
+        '<i class="fa-brands fa-stack-overflow" onclick="openURL(slack)"></i>',
+        '<i class="fa-brands fa-slack" onclick="openURL(slack)"></i>'
+    ]
+
+    for (let i = 3; i < CONTACT_DIV_ARRAY.length; i++) {
+        CONTACT_DIV_ARRAY[i].innerHTML = (iconArray[i - 3]);
+        CONTACT_DIV_ARRAY[i].addEventListener('click', openURL);
+    }
+}
+
+generateIcons();
+// ANIMATION IN BANNER ----------------------------------------------------------------------------------------------------------
+
+// This is for a future update. Currently the banner class will only display text / gradient
+
+// // Khayman Animation
+const playerCanvas = document.getElementById('khayman');
+
+
+// Parallax Background Animation
+const BackgroundCanvas = document.getElementById('parallax-bg');
+

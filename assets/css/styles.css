@@ -1,4 +1,4 @@
-/* Global and body styles */
+/* Global and body styles ------------------------------------------------------- */
 :root {
     --font-1: monospace;
     --font-color-1: #7F00A9;
@@ -16,8 +16,6 @@ body {
     background-image: var(--linear-1);
     height: 100vh;
     font-family: var(--font-1);
-    /* overflow: hidden; */
-
 }
 
 a {
@@ -27,15 +25,15 @@ a {
 
 a:hover {
     color: var(--font-color-1);
-    background-image: var(--linear-1);
+    background-image: var(--linear-2);
 }
 
-/* Reusable classes */
+/* Reusable classes ------------------------------------------------------------ */
 .lightFont {
     color: var(--font-color-light);
 }
 
-/* Navbar and header styles */
+/* Navbar and header styles ---------------------------------------------------- */
 header {
     width: 80%;
     height: 50px;
@@ -74,7 +72,7 @@ header > ul > li {
     position: relative;
 }
 
-/* main and section grid styles */
+/* main and section grid styles ------------------------------------------------ */
 main {
     display: grid;
     grid-template-rows: 3fr 3fr 3fr;
@@ -95,7 +93,7 @@ section {
 }
 
 
-/* welcome section layout styling */
+/* welcome section layout styling ---------------------------------------------- */
 #welcome {
     display: grid;
     grid-template-rows: 3fr 1fr 400px;
@@ -108,11 +106,15 @@ section {
     justify-items: center;
 }
 
+#welcome > a:hover {
+    background-image: none;
+}
+
 #profile-container {
     grid-areas: profile;
 }
 
-/* Profile pic and text styling */
+/* Profile pic and text styling ------------------------------------------------ */
 #profile-container > img {
     width: 300px;
     height: 300px;
@@ -158,14 +160,14 @@ section {
     position: static;
     border: 8px outset gray;
     width: 100%;
-    height: 70%;
+    height: 240px;
     margin-top: 20px;
     margin-bottom: 190px;
-    background-color: #FFA4FC;
+    background-color: #adadad;
 }
 
 
-/* Portfolio grid styles */
+/* Portfolio grid styles -------------------------------------------------------- */
 #portfolio {
     display: grid;
     grid-template-rows: 2fr 1fr 1fr;
@@ -176,7 +178,7 @@ section {
         "tertiary4 tertiary5 tertiary6";
 }
 
-.mainFeature {
+#mainFeature {
     grid-area: mainFeature;
 }
 
@@ -185,8 +187,13 @@ section {
     margin: 5px;
 }
 
+#portfolioSecondary {
+    border: 2px dashed blue;
+    grid-areas: secondary;
+}
 
-/* Contact section styles */
+
+/* Contact section styles ----------------------------------------------------- */
 #contact {
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
@@ -199,48 +206,108 @@ section {
     padding-bottom: 70px;
 }
 
-.mainContact {
+#mainContact {
     grid-area: main;
+    background-color: var(--font-color-light);
+    text-align: center;
+    font-size: 2rem;
+    padding-top: 100px;
+    color: var(--font-color-1);
 }
 
-.emailForm {
-    grid-area: emailForm; 
+#mainContact::after {
+    content: "Contact Me";
 }
 
-.links {
-    grid-area: links;
-}
-
-.mainDiv {
-    border: 2px solid black;
+#mainDiv {
     grid-areas: main;
-
 }
 
-.portfolioSecondary {
-    border: 2px dashed blue;
-    grid-areas: secondary;
+/* Form grid styles ---------------------------------------------------------- */
+#emailForm {
+    grid-area: emailForm;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 5fr 1fr;
+    grid-template-columns: auto;
+    grid-template-areas: 
+        "name"
+        "email"
+        "message"
+        "submit";
 }
 
-/* Footer styles */
-footer {
-    position: fixed;
-    bottom: 0;
-    border-top: 8px solid black;
+.nameGrid {
+    grid-area: name;
 }
 
-/*
-    Media queries: 
-        Keep track of - Header  (flex)
-                        Main    (grid)
-                        Sections (grid)
-                        section-content (grid)
-                        footer (flex)
-*/
+.emailGrid {
+    grid-area: email;
+}
 
+.textGrid {
+    grid-area: message;
+}
+
+.sendGrid {
+    grid-area: submit;
+}
+
+.nameGrid::placeholder,
+.emailGrid::placeholder,
+.textGrid::placeholder {
+    font-family: verdana;
+    text-align: left;
+}
+
+
+.nameGrid,
+.emailGrid,
+.textGrid {
+    padding: 20px;
+}
+
+#contact > div > i {
+    transform: scale(300%);
+    position: relative;
+    left: 50%;
+    top: 50%;
+    color: var(--font-color-1);
+    transition: linear;
+    transition-duration: 0.3s;
+}
+
+#contact > div > i:hover {
+    transform: scale(315%);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+
+#icon3,
+#icon6,
+#icon5,
+#icon4 {
+    border: 0 !important;
+}
+
+
+/* Links styles ------------------------------------------------------------- */
+#links {
+    grid-area: links;
+    background-color: var(--font-color-light);
+    color: var(--font-color-1);
+    font-size: 1.5rem;
+    text-indent: 2rem;
+    line-height: 2rem;
+    text-align: justify;
+}
+
+/* responsive design styles, mobile min and max ----------------------------- */
 @media (min-width: 310px) and (max-width: 600px) {
     main {
         margin: 0;
+        height: 200vh;
     }
     
     body {
@@ -263,6 +330,7 @@ footer {
     }
 
     #welcome {
+        height: 800px;
         grid-template-rows: 200px 200px 300px;
         grid-template-columns: 1fr;
         grid-template-areas: 
@@ -271,10 +339,11 @@ footer {
             "banner";
         align-items: center;
         justify-items: center;
+        margin-bottom: 0;
     }
 
     #profile-container {
-        margin-top: 50px;
+        margin-top: 60px;
     }
 
     #profile-container > img {
@@ -289,12 +358,9 @@ footer {
     }
 
     .banner {
+        margin-top: 30px;
+        margin-bottom: 0;
         height: 140px;
-    }
-
-    #portfolio > div,
-    #contact > div {
-        margin: 0;
     }
 
     #portfolio {
@@ -310,6 +376,9 @@ footer {
             "tertiary4"
             "tertiary5"
             "tertiary6";
+
+        margin-top: 0;
+        padding-top: 0;
     }
 
     #contact {
@@ -326,15 +395,15 @@ footer {
             "icon3"
             "icon4";    
     }
-    
-    .icon3,
-    .icon6,
-    .icon5,
-    .icon4 {
-        border: 0 !important;
+
+    #portfolio > div,
+    #contact > div {
+        margin: 0;
     }
+    
 }
 
+/* tablet min and max --------------------------------------------------------- */
 @media (min-width: 601px) and (max-width: 1100px) {
     header {
         width: 100vw;
