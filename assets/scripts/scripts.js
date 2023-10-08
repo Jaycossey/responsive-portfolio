@@ -14,6 +14,25 @@ const contactRequires = 7;
 const PORTFOLIO_DIV_ARRAY = [];
 const CONTACT_DIV_ARRAY = [];
 
+// Array for portfolio links
+const PORTFOLIO_OBJECTS = [
+    {
+        name: "Touch Grass",
+        link: "https://jaycossey.github.io/touch-grass/",
+        image: "../images/touch-grass.PNG"     
+    },
+    {
+        name: "Settlement Generator",
+        link: "https://codepen.io/Jaycossey/pen/zYmJgZw",
+        image: "../images/settlement.PNG"
+    },
+    {
+        name: "Dethklok Quote Machine",
+        link: "https://codepen.io/Jaycossey/pen/dyjdmWG",
+        image: "../images/dethklok-quote.PNG"
+    }
+]
+
 // Storage for about me text
 const aboutMeText = "If you would like to work with me, you can fill out the form, or click on any of the links below.\nPlease note, this is a work in progress.";
 
@@ -110,6 +129,26 @@ function generateDivs(sectionName) {
 portfolioWIndow.onload = generateDivs("portfolio");
 contactWindow.onload = generateDivs("contact");
 
+// PORTFOLIO LINKS AND FUNCTIONS ------------------------------------------------------------------------------------------------
+/**
+ * TOMORROW MAIN FOCUS!!!!!
+ *  - need to apply the bg images (screenshots) to each div within the portfolio section
+ *  - need to make sure they are all links to their respective live pages/ codepens.
+ *  - can do this with JS to save myself time, loop through the array and if project exists,
+ *          - then apply that bg image and link to the div. 
+ *          - remember to add an alt attribute to all images 
+ *          - remember to add TITLE to each of the divs, could do an append 'p' element to make it simple. 
+ *          - use OOP to generate titles depending on position of the array values. new Title(dethklok) etc. 
+ *      I have now got an array of objects, each with name, link and title. I can add to this array as needed.
+ *     
+ * Pseudocode:
+ *      For each div in portfolio,
+ *          iterate through and add the corresponding images and links
+ *      if there is no value in (objectarray[i]) (divarray[j]) t
+ *          then return "coming soon" div, style with JS for speed and automation. 
+ */
+
+
 // CONTACT FORM GENERATION AND ICONS --------------------------------------------------------------------------------------------
 let emailFormElement = document.getElementById('emailForm');
 
@@ -148,27 +187,26 @@ function openURL(url) {
 
 function generateIcons() {
     const iconArray = [
-        '<i class="fa-brands fa-linkedin" onclick="openURL(linked)"></i>',
-        '<i class="fa-brands fa-github" onclick="openURL(github)"></i>',
-        '<i class="fa-brands fa-stack-overflow" onclick="openURL(slack)"></i>',
-        '<i class="fa-brands fa-slack" onclick="openURL(slack)"></i>'
+        '<a href="https://www.linkedin.com/in/ian-scott-6112ba258/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>',
+        '<a href="https://github.com/Jaycossey" target="_blank"><i class="fa-brands fa-github"></i></a>',
+        '<a href="https://stackoverflow.com/users/20585015/jaycossey" target="_blank"><i class="fa-brands fa-stack-overflow"></a></i>',
+        '<a href="https://codepen.io/Jaycossey" target="_blank"><i class="fa-brands fa-codepen"></i></a>'
     ]
 
     for (let i = 3; i < CONTACT_DIV_ARRAY.length; i++) {
         CONTACT_DIV_ARRAY[i].innerHTML = (iconArray[i - 3]);
-        CONTACT_DIV_ARRAY[i].addEventListener('click', openURL);
     }
 }
 
 generateIcons();
 // ANIMATION IN BANNER ----------------------------------------------------------------------------------------------------------
 
-// This is for a future update. Currently the banner class will only display text / gradient
+// // This is for a future update. Currently the banner class will only display text / gradient
 
-// // Khayman Animation
-const playerCanvas = document.getElementById('khayman');
+// // // Khayman Animation
+// const playerCanvas = document.getElementById('khayman');
 
 
-// Parallax Background Animation
-const BackgroundCanvas = document.getElementById('parallax-bg');
+// // Parallax Background Animation
+// const BackgroundCanvas = document.getElementById('parallax-bg');
 
