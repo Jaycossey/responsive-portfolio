@@ -213,29 +213,37 @@ portfolioContent();
 let emailFormElement = document.getElementById('emailForm');
 
 function generateForm() {
+    let formElement = document.createElement('form');
     let nameInput = document.createElement('input');
     let emailInput = document.createElement('input');
     let textInput = document.createElement('input');
     let sendButton = document.createElement('button');
 
+    formElement.className = "formElement";
+
     nameInput.className = "nameGrid";
+    nameInput.type = "text";
+    // nameInput.name = "sname";
     nameInput.placeholder = "Your Name:";
 
     emailInput.className = "emailGrid";
+    emailInput.type = "email";
     emailInput.placeholder = "Your Email:";
     
     textInput.className = "textGrid";
     textInput.placeholder = "Your Message:";
     
     sendButton.className = "sendGrid";
-    sendButton.innerText = "Send Message"
+    sendButton.innerText = "Send Email";
+    sendButton.type = "submit";
+    sendButton.value = "Send";
 
-    emailFormElement.appendChild(nameInput);
-    emailFormElement.appendChild(emailInput);
-    emailFormElement.appendChild(textInput);
-    emailFormElement.appendChild(sendButton);
+    formElement.appendChild(nameInput);
+    formElement.appendChild(emailInput);
+    formElement.appendChild(textInput);
+    formElement.appendChild(sendButton);
 
-
+    emailFormElement.appendChild(formElement);
 }
 
 generateForm();
