@@ -19,22 +19,47 @@ const PORTFOLIO_OBJECTS = [
     {
         name: "Touch Grass",
         link: "https://jaycossey.github.io/touch-grass/",
-        image: "../images/touch-grass.PNG"     
+        image: "./assets/images/touch-grass.PNG"
     },
     {
         name: "Settlement Generator",
         link: "https://codepen.io/Jaycossey/pen/zYmJgZw",
-        image: "../images/settlement.PNG"
+        image: "./assets/images/settlement.PNG"
     },
     {
         name: "Dethklok Quote Machine",
         link: "https://codepen.io/Jaycossey/pen/dyjdmWG",
-        image: "../images/dethklok-quote.PNG"
+        image: "./assets/images/dethklok-quote.PNG"
+    },
+    {
+        name: "Coming Soon",
+        link: "",
+        image: ""
+    },
+    {
+        name: "Coming Soon",
+        link: "",
+        image: ""
+    },
+    {
+        name: "Coming Soon",
+        link: "",
+        image: ""
+    },
+    {
+        name: "Coming Soon",
+        link: "",
+        image: ""
+    },
+    {
+        name: "Coming Soon",
+        link: "",
+        image: ""
     }
 ]
 
 // Storage for about me text
-const aboutMeText = "If you would like to work with me, you can fill out the form, or click on any of the links below.\nPlease note, this is a work in progress.";
+const aboutMeText = "If you would like to work with me, you can fill out the form, or click on any of the links below.\nPlease note, this is a work in progress. Currently the form is not functional.";
 
 // create elements and push to arrays
 function createElements(sectionName, targetArray, divsNeeded) {
@@ -129,24 +154,59 @@ function generateDivs(sectionName) {
 portfolioWIndow.onload = generateDivs("portfolio");
 contactWindow.onload = generateDivs("contact");
 
-// PORTFOLIO LINKS AND FUNCTIONS ------------------------------------------------------------------------------------------------
-/**
- * TOMORROW MAIN FOCUS!!!!!
- *  - need to apply the bg images (screenshots) to each div within the portfolio section
- *  - need to make sure they are all links to their respective live pages/ codepens.
- *  - can do this with JS to save myself time, loop through the array and if project exists,
- *          - then apply that bg image and link to the div. 
- *          - remember to add an alt attribute to all images 
- *          - remember to add TITLE to each of the divs, could do an append 'p' element to make it simple. 
- *          - use OOP to generate titles depending on position of the array values. new Title(dethklok) etc. 
- *      I have now got an array of objects, each with name, link and title. I can add to this array as needed.
- *     
- * Pseudocode:
- *      For each div in portfolio,
- *          iterate through and add the corresponding images and links
- *      if there is no value in (objectarray[i]) (divarray[j]) t
- *          then return "coming soon" div, style with JS for speed and automation. 
- */
+// PORTFOLIO LINKS AND FUNCTIONS ------------------------------------------------------------------------------------------------0
+
+// Create some simple CSS art to display a "notice board" coming soon.
+function comingSoon(div) {
+    div.style.backgroundImage = "url(./assets/images/manadacrystal.png)";
+    div.style.backgroundColor = "white";
+    div.style.backgroundRepeat = "no-repeat";
+    div.style.backgroundPosition = "center";
+    div.style.paddingTop = "10px";
+    div.innerText = "Coming Soon!";
+    div.style.textAlign = "center";
+    div.title = "comingSoon";
+}
+
+// Generate content dynamically using object array
+function portfolioContent() {
+    // I could look at other loops but for ease of writing, I went with the for loop
+    for (let i = 0; i < PORTFOLIO_DIV_ARRAY.length; i++) {
+        if (PORTFOLIO_OBJECTS[i].name === "Coming Soon") {
+            comingSoon(PORTFOLIO_DIV_ARRAY[i]);
+        } else {
+            // Create and style the banner
+            let titleBanner = document.createElement('div');
+
+            titleBanner.innerText = PORTFOLIO_OBJECTS[i].name;
+            titleBanner.style.textAlign = "center";
+            titleBanner.style.zIndex = "0";
+            titleBanner.style.fontSize = "1rem";
+            titleBanner.style.paddingTop = "5px";
+            titleBanner.style.height = "10%";
+            titleBanner.style.backgroundColor = "#EFC4ED";
+            titleBanner.style.border = "4px solid purple";
+            titleBanner.style.position = "relative";
+
+            // Add and style the background -- IMPORTANT, I forgot about backticks here, useful to remember these
+            PORTFOLIO_DIV_ARRAY[i].style.backgroundImage = `url("${PORTFOLIO_OBJECTS[i].image}")`;
+            PORTFOLIO_DIV_ARRAY[i].style.backgroundPosition = "bottom";
+            PORTFOLIO_DIV_ARRAY[i].style.backgroundSize = "150%";
+            PORTFOLIO_DIV_ARRAY[i].style.backgroundRepeat = "none";
+
+            // Add links to each element
+            PORTFOLIO_DIV_ARRAY[i].onclick = function() {
+                window.open(PORTFOLIO_OBJECTS[i].link, '_blank');
+            };
+
+            // Append the banner to the parent container
+            PORTFOLIO_DIV_ARRAY[i].appendChild(titleBanner);
+        }
+    }
+    return;
+}
+
+portfolioContent();
 
 
 // CONTACT FORM GENERATION AND ICONS --------------------------------------------------------------------------------------------
