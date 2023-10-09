@@ -12,9 +12,7 @@ This is an early version of my portfolio, focusing on responsive design and CSS.
 
 ## Roadmap
 
-- Complete landing page and structure
-- Complete stylings for each grid element
-- Add form and icon elements to contact page
+- Add form functionality
 - Add images / animations
 
 ## Usage
