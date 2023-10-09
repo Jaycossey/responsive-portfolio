@@ -1,8 +1,9 @@
-// SECTION STYLING AND CREATION --------------------------------------------------------------------------------------------
-
-// GLOBALS ---------------------------------
+// GLOBALS -----------------------------------------------------------------------------------------------------------------
 let portfolioWIndow = document.getElementById('portfolio');
 let contactWindow = document.getElementById('contact');
+
+// Storage for about me text
+const aboutMeText = "If you would like to work with me, you can fill out the form, or click on any of the links below.\nPlease note, this is a work in progress. Currently the form is not functional.";
 
 // Variables to determine total divs needed per section
 // -- side note, this is determined by the total grid area names not the columns and rows!
@@ -32,9 +33,9 @@ const PORTFOLIO_OBJECTS = [
         image: "./assets/images/dethklok-quote.PNG"
     },
     {
-        name: "Coming Soon",
-        link: "",
-        image: ""
+        name: "Posture Check",
+        link: "https://jaycossey.github.io/posture-check/",
+        image: "./assets/images/posture-check.PNG"
     },
     {
         name: "Coming Soon",
@@ -56,12 +57,9 @@ const PORTFOLIO_OBJECTS = [
         link: "",
         image: ""
     }
-]
+];
 
-// Storage for about me text
-const aboutMeText = "If you would like to work with me, you can fill out the form, or click on any of the links below.\nPlease note, this is a work in progress. Currently the form is not functional.";
-
-// create elements and push to arrays
+// create elements and push to arrays -------------------------------------------------------------------------------------------
 function createElements(sectionName, targetArray, divsNeeded) {
     // variables to allow some scalability
     for (let i = 0; i < divsNeeded; i++) {
@@ -154,7 +152,7 @@ function generateDivs(sectionName) {
 portfolioWIndow.onload = generateDivs("portfolio");
 contactWindow.onload = generateDivs("contact");
 
-// PORTFOLIO LINKS AND FUNCTIONS ------------------------------------------------------------------------------------------------0
+// PORTFOLIO LINKS AND FUNCTIONS ------------------------------------------------------------------------------------------------
 
 // Create some simple CSS art to display a "notice board" coming soon.
 function comingSoon(div) {
@@ -182,7 +180,7 @@ function portfolioContent() {
             titleBanner.style.textAlign = "center";
             titleBanner.style.zIndex = "0";
             titleBanner.style.fontSize = "1rem";
-            titleBanner.style.paddingTop = "5px";
+            titleBanner.style.padding = "10px";
             titleBanner.style.height = "10%";
             titleBanner.style.backgroundColor = "#EFC4ED";
             titleBanner.style.border = "4px solid purple";
@@ -193,6 +191,7 @@ function portfolioContent() {
             PORTFOLIO_DIV_ARRAY[i].style.backgroundPosition = "bottom";
             PORTFOLIO_DIV_ARRAY[i].style.backgroundSize = "150%";
             PORTFOLIO_DIV_ARRAY[i].style.backgroundRepeat = "none";
+            PORTFOLIO_DIV_ARRAY[i].title = PORTFOLIO_OBJECTS[i].name;
 
             // Add links to each element
             PORTFOLIO_DIV_ARRAY[i].onclick = function() {
@@ -249,10 +248,6 @@ function generateForm() {
 generateForm();
 
 // Create the icons for contact section -----------------------------------------------------------------------------------------
-function openURL(url) {
-    console.log("openlink " + url);
-}
-
 function generateIcons() {
     const iconArray = [
         '<a href="https://www.linkedin.com/in/ian-scott-6112ba258/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>',
@@ -267,14 +262,16 @@ function generateIcons() {
 }
 
 generateIcons();
+
+
 // ANIMATION IN BANNER ----------------------------------------------------------------------------------------------------------
 
 // // This is for a future update. Currently the banner class will only display text / gradient
 
-// // // Khayman Animation
-// const playerCanvas = document.getElementById('khayman');
+// Khayman Animation
+const playerCanvas = document.getElementById('khayman');
 
 
-// // Parallax Background Animation
-// const BackgroundCanvas = document.getElementById('parallax-bg');
+// Parallax Background Animation
+const BackgroundCanvas = document.getElementById('parallax-bg');
 
