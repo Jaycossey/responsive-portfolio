@@ -1,6 +1,7 @@
 /* Global and body styles ------------------------------------------------------- */
 :root {
     --font-1: monospace;
+    --font-2: verdana, sans-serif;
     --font-color-1: #7F00A9;
     --font-color-light: #E9B4FA;
     --linear-1: linear-gradient(0deg, #D1D1D1, #B25FAF, #D1D1D1);
@@ -8,7 +9,6 @@
     --header-linear: linear-gradient(#3D3D3D, black);
     --radial-white: radial-gradient(ellipse, white, transparent 70%);
     --radial-white-100: radial-gradient(ellipse, white, transparent 95%);
-
     scroll-behavior: smooth;
 }
 
@@ -44,6 +44,7 @@ header {
     position: fixed;
     top: 0;
     left: -30px;
+    z-index: 10;
 }
 
 header > img {
@@ -72,7 +73,7 @@ header > ul > li {
     position: relative;
 }
 
-/* main and section grid styles ------------------------------------------------ */
+/* main grid styles ------------------------------------------------ */
 main {
     display: grid;
     grid-template-rows: 3fr 3fr 3fr;
@@ -84,14 +85,6 @@ main {
     gap: 60px;
     margin: 50px;
 }
-
-section {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    padding: auto;
-}
-
 
 /* welcome section layout styling ---------------------------------------------- */
 #welcome {
@@ -180,11 +173,6 @@ section {
 
 #mainFeature {
     grid-area: mainFeature;
-    background-image: url(../images/touch-grass.PNG); 
-    background-repeat: none;
-    background-attacchment: fixed;
-    background-position: right;
-    background-size: 100%;
 }
 
 #portfolio > div,
@@ -193,10 +181,16 @@ section {
 }
 
 #portfolioSecondary {
-    border: 2px dashed blue;
     grid-areas: secondary;
 }
 
+#portfolio > div:hover {
+    cursor: pointer;
+}
+
+#portfolio > [title="comingSoon"]:hover {
+    cursor: default;
+}
 
 /* Contact section styles ----------------------------------------------------- */
 #contact {
