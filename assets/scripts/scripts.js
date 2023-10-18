@@ -38,9 +38,9 @@ const PORTFOLIO_OBJECTS = [
         image: "./assets/images/posture-check.PNG"
     },
     {
-        name: "Coming Soon",
-        link: "",
-        image: ""
+        name: "Bootstrap Portfolio",
+        link: "https://jaycossey.github.io/Bootstrap-Portfolio/",
+        image: "./assets/images/bootstrap-screenshot.PNG"
     },
     {
         name: "Coming Soon",
