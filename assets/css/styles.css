@@ -182,7 +182,7 @@ main {
 }
 
 #portfolioSecondary {
-    grid-areas: secondary;
+    grid-area: secondary;
 }
 
 #portfolio > div:hover {
