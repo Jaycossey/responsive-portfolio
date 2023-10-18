@@ -273,5 +273,75 @@ const playerCanvas = document.getElementById('khayman');
 
 
 // Parallax Background Animation
-const BackgroundCanvas = document.getElementById('parallax-bg');
+// Create reference to canvas and context 2d
+const backgroundCanvas = document.getElementById('parallax-bg');
+const bgCtx = backgroundCanvas.getContext('2d');
 
+// Declare canvas width and heights
+const BG_CANVAS_WIDTH = backgroundCanvas.width;
+const BG_CANVAS_HEIGHT = backgroundCanvas.height;
+
+// Set speed of the spritesheet animation
+let bgSpeed = 3;
+let bgFrame = 0;
+
+// Declare and set source for each layer
+const bgLayer1 = new Image();
+bgLayer1.src = "./assets/images/grassLayer1.png";
+const bgLayer2 = new Image();
+bgLayer2.src = "./assets/images/treeLayer1.png";
+const bgLayer3 = new Image();
+bgLayer3.src = "./assets/images/bg-layer-5.png";
+
+// Create classes for each layer
+class Layer {
+    // set each layer's attributes with this keyword
+    constructor(image, speedModifier) {
+        this.x = 0;
+        this.y = 0;
+        this.width = BG_CANVAS_WIDTH;
+        this.height = BG_CANVAS_HEIGHT;
+        this.image = image;
+        this.speedModifier = speedModifier;
+        this.speed = bgSpeed * speedModifier;
+    }
+    // when the object update function is called, move the layer at set speeds and frames
+    update() {
+        this.speed = bgSpeed * this.speedModifier;
+        this.x = bgFrame * this.speed % this.width;
+    }
+    // draw the new position on the canvas
+    draw() {
+        // draw on canvas with new, updated parameters. 
+        bgCtx.drawImage(this.image, this.x, this.y, this.width, this.height);
+        // draw a second time to prevent gaps as the image resets
+        bgCtx.drawImage(this.image, this.x + this.width - 1, this.y, this.width, this.height);
+    }
+}
+
+// Set the layers with the images
+const layer1 = new Layer(bgLayer1, 1);
+const layer2 = new Layer(bgLayer2, 0.75);
+const layer3 = new Layer(bgLayer3, 0.5);
+
+// store the variables in an array
+const bgObjects = [layer3, layer2, layer1];
+
+// Animate the layers on the canvas, providing infinite loop to handle the constant movement.
+function animateBackground() {
+    // clear current frame
+    bgCtx.clearRect(0, 0, BG_CANVAS_WIDTH, BG_CANVAS_HEIGHT);
+
+    // Update all layers in the array by calling their assigned functional properties
+    bgObjects.forEach(object => {
+        object.update();
+        object.draw();
+    });
+
+    // reduce frame, otherwise the animation will move right
+    bgFrame--;
+    // recursive call to provide the infinite loop
+    requestAnimationFrame(animateBackground);
+}
+
+animateBackground();
