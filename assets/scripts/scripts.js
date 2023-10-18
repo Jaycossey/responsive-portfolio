@@ -266,7 +266,7 @@ generateIcons();
 
 // ANIMATION IN BANNER ----------------------------------------------------------------------------------------------------------
 
-// Khayman Animation
+// Khayman Animation-----------------------------------------------------------
 // Create reference to canvas and context
 const playerCanvas = document.getElementById('khayman');
 const playerCtx = playerCanvas.getContext('2d');
@@ -337,7 +337,9 @@ function playerAnimate() {
 
 playerAnimate();
 
-// Parallax Background Animation
+
+
+// Parallax Background Animation-------------------------------------------
 // Create reference to canvas and context 2d
 const backgroundCanvas = document.getElementById('parallax-bg');
 const bgCtx = backgroundCanvas.getContext('2d');
