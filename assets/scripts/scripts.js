@@ -43,9 +43,9 @@ const PORTFOLIO_OBJECTS = [
         image: "./assets/images/bootstrap-screenshot.PNG"
     },
     {
-        name: "Coming Soon",
-        link: "",
-        image: ""
+        name: "Password Generator",
+        link: "https://jaycossey.github.io/password-generator/",
+        image: "./assets/images/password-gen.PNG"
     },
     {
         name: "Coming Soon",
